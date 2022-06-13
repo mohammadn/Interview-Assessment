@@ -1,0 +1,10 @@
+{% extends "_base.html" %}
+{% block title %}
+	Home
+{% endblock %}
+
+{% block content %}
+    <form id="startForm">
+        <button type="submit" id="startButton" formaction="/get-cat" formmethod="post">Start the Cat Show</button>
+    </form>
+{% endblock %}
