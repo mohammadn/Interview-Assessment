@@ -6,11 +6,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-
-@app.route('/get-cat', methods=["Post", "Get"])
-def get_cat():
     url = "https://api.thecatapi.com/v1/images/search"
 
     headers = {
@@ -19,7 +14,7 @@ def get_cat():
     }
 
     response = requests.get(url, headers=headers).json()[0]
-    return render_template('votes.html', response=response)
+    return render_template('index.html', response=response)
 
 
 @app.route('/voting', methods=["Post"])
@@ -44,7 +39,7 @@ def voting():
 
     requests.post(url, headers=headers, data=payload_dumped)
 
-    return redirect('/get-cat')
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run()

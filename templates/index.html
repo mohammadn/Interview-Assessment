@@ -1,10 +1,15 @@
 {% extends "_base.html" %}
+
 {% block title %}
 	Home
 {% endblock %}
 
 {% block content %}
-    <form id="startForm">
-        <button type="submit" id="startButton" formaction="/get-cat" formmethod="post">Start the Cat Show</button>
-    </form>
+    <div class="container">
+        <img id= "catImage" src="{{ response['url'] }}" alt="Girl in a jacket" width="500" height="600">
+        <form id="votingButtons">
+            <button name="vote-down" id="voteDown" type="submit" formaction="{{ url_for('voting', value = 0, image_id = response['id'], sub_id = 'default') }}" formmethod="post">Dislike</button>
+            <button name="vote-up" id="voteUp" type="submit" formaction="{{ url_for('voting', value = 1, image_id = response['id'], sub_id = 'default') }}" formmethod="post">Like</button>
+        </form>
+    </div>
 {% endblock %}
